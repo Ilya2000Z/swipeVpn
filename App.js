@@ -30,7 +30,7 @@ const App = () => {
   const startOvpn = async () => {
     try {
       await RNSimpleOpenvpn.connect({
-        remoteAddress: '192.168.1.1 3000',
+        remoteAddress: '85.192.48.251',
         ovpnFileName: 'client',
         assetsPath: 'ovpn/',
         providerBundleIdentifier: 'com.example.RNSimpleOvpnTest.NEOpenVPN',
