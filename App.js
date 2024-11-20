@@ -1,20 +1,62 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Button, Text } from 'react-native';
+import { Platform } from 'react-native';
+import RNSimpleOpenvpn, { addVpnStateListener, removeVpnStateListener } from 'react-native-simple-openvpn';
 
-export default function App() {
+const App = () => {
+  const [vpnState, setVpnState] = useState(null);
+  const [isConnected, setIsConnected] = useState(false);
+
+  useEffect(() => {
+    const observeVpn = async () => {
+      if (Platform.OS === 'ios') {
+        await RNSimpleOpenvpn.observeState();
+      }
+      addVpnStateListener((e) => {
+        setVpnState(e);
+      });
+    };
+
+    observeVpn();
+
+    return async () => {
+      if (Platform.OS === 'ios') {
+        await RNSimpleOpenvpn.stopObserveState();
+      }
+      removeVpnStateListener();
+    };
+  }, []);
+
+  const startOvpn = async () => {
+    try {
+      await RNSimpleOpenvpn.connect({
+        remoteAddress: '192.168.1.1 3000',
+        ovpnFileName: 'client',
+        assetsPath: 'ovpn/',
+        providerBundleIdentifier: 'com.example.RNSimpleOvpnTest.NEOpenVPN',
+        localizedDescription: 'RNSimpleOvpn',
+      });
+      setIsConnected(true);
+    } catch (error) {
+      console.error('Error connecting to VPN:', error);
+    }
+  };
+
+  const stopOvpn = async () => {
+    try {
+      await RNSimpleOpenvpn.disconnect();
+      setIsConnected(false);
+    } catch (error) {
+      console.error('Error disconnecting from VPN:', error);
+    }
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>VPN State: {vpnState ? JSON.stringify(vpnState) : 'Not Connected'}</Text>
+      <Button title={isConnected ? 'Disconnect' : 'Connect'} onPress={isConnected ? stopOvpn : startOvpn} />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
