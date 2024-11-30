@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { View, Button, Text } from 'react-native';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import RNSimpleOpenvpn, { addVpnStateListener, removeVpnStateListener } from 'react-native-simple-openvpn';
+import BaseButton from './components/UI/BaseButton'
+import Place from './components/UI/Place'
+import Swipe from './components/UI/Swipe'
+import Home from './components/Home';
+import Quiz from './components/Quiz';
+import StartScreen from './components/StartScreen';
+import { useFonts } from "expo-font";
 
 const App = () => {
   const [vpnState, setVpnState] = useState(null);
@@ -52,6 +59,9 @@ const App = () => {
   };
 
   return (
+//    <Quiz/>
+//	<StartScreen/>
+//	<Home/>
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>VPN State: {vpnState ? JSON.stringify(vpnState) : 'Not Connected'}</Text>
       <Button title={isConnected ? 'Disconnect' : 'Connect'} onPress={isConnected ? stopOvpn : startOvpn} />
