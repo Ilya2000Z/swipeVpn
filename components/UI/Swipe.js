@@ -3,8 +3,8 @@ import { View, Button, Text, StyleSheet,Pressable,Image,ImageBackground } from '
 import { Platform } from 'react-native';
 import { useFonts } from "expo-font";
 import DotsSvg from '../../svg/dots.js';
-import ChevronsSvg from '../../svg/chevrons.js';
-import ChevronsDisabled from '../../svg/chevronsDisabled.js';
+import ChevronsActive from '../../assets/chevrons.svg';
+import ChevronsDisabled from '../../assets/chevrons-disabled.svg';
 import Animated, {
     useAnimatedStyle,
     useSharedValue,
@@ -24,13 +24,14 @@ const SwipeButton = (props) => {
   });
     return (
         <View>
-            <View style={styles.track}>
-                <Pressable style={[styles.thumb, props.isDisabled ? styles.disabled : styles.active]}>
+            <View style={[props.isConnected==='true' ? styles.trackConnected : styles.track]}>
+                <Pressable style={[styles.thumb, props.isDisabled==='true' ? styles.disabled : styles.active]}>
                     <DotsSvg/>
                 </Pressable>
-                <Text style={[styles.text, props.isDisabled ? styles.disabledText : styles.activeText]}>Connect</Text>
-                { !props.isDisabled && <ChevronsSvg/> }
-                { props.isDisabled && <ChevronsDisabled/> }
+                {props.isConnected==='false' && <Text style={[styles.text, props.isDisabled ? styles.disabledText : styles.activeText]}>Connect</Text>}
+                {props.isConnected==='true' && <Text style={styles.disconnectText}>Disconnect</Text>}
+                { props.isDisabled==='false' && <ChevronsActive style={props.isConnected ? styles.chevronsConnected : ''}/> }
+                { props.isDisabled==='true' && <ChevronsDisabled/> }
             </View>
         </View>
       );
@@ -48,6 +49,19 @@ const SwipeButton = (props) => {
         justifyContent: 'space-between',
         padding: 4,
         paddingRight: 24,
+        borderRadius: 190,
+    },
+    trackConnected: {
+        flexDirection: 'row-reverse',
+        height: 74,
+        backdropFilter: 'blur(4.800000190734863px)',
+        borderWidth: 1,
+        borderColor: '#1C1F20',
+        borderStyle: 'stroke',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 4,
+        paddingLeft: 24,
         borderRadius: 190,
     },
     thumb: {
@@ -76,7 +90,13 @@ const SwipeButton = (props) => {
     },
     activeText: {
         color: '#fff',
-    }
+    },
+    disconnectText: {
+        color: '#DD2033',
+    },
+    chevronsConnected: {
+        transform: [{ rotate: '-180deg' }],
+    },
   })
 
 export default SwipeButton;

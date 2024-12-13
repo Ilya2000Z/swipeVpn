@@ -8,6 +8,7 @@ import Swipe from './components/UI/Swipe'
 import Home from './components/Home';
 import Quiz from './components/Quiz';
 import StartScreen from './components/StartScreen';
+import ConnectionScreen from './components/ConnectionScreen'
 import { useFonts } from "expo-font";
 
 const App = () => {
@@ -59,13 +60,11 @@ const App = () => {
   };
 
   return (
+  <ConnectionScreen/>
 //    <Quiz/>
 //	<StartScreen/>
 //	<Home/>
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>VPN State: {vpnState ? JSON.stringify(vpnState) : 'Not Connected'}</Text>
-      <Button title={isConnected ? 'Disconnect' : 'Connect'} onPress={isConnected ? stopOvpn : startOvpn} />
-    </View>
+
   );
 };
 

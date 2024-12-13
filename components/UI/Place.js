@@ -9,26 +9,28 @@ const Place = (props) => {
   const [isActive, setIsActive] = useState(false);
 return (
 <View style={[styles.container, !isActive ? styles.active : styles.disabled]}>
+<View style={styles.wrapper}>
     <Image source={require('../../assets/NL.png')}/>
-    <Text style={styles.text}>Amsterdam, NL</Text>
+    <Text style={styles.text}>Amsterdam,NL</Text>
+    </View>
 </View>
 );
 }
 const styles = StyleSheet.create({
     container: {
         borderWidth: 1,
-        maxWidth: 'auto',
         height:48,
         borderRadius: 24,
         backdropFilter: 'blur(9.600000381469727px)',
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingLeft: 4,
-        paddingTop: 6,
-        paddingBottom:6,
-        paddingRight: 12,
+    },
+    wrapper: {
+            paddingLeft: 4,
+            paddingTop: 6,
+            paddingBottom:6,
+            paddingRight: 12,
+                   flexDirection: 'row',
+                    justifyContent: 'center',
+                    alignItems: 'center',
     },
     disabled: {
         borderColor: '#FFFFFF1A',
