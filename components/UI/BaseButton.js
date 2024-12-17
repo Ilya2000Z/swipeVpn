@@ -4,6 +4,7 @@ import { Platform } from 'react-native';
 import { SvgUri } from "react-native-svg";
 import MenuSvg from "../../svg/menu.js"
 import WorldSvg from "../../svg/world.js"
+import Exit from "../../assets/exit.svg"
 
 const BaseButton = (props) => {
 return (
@@ -11,9 +12,12 @@ return (
         {props.theme==='menu' && <Pressable style={styles.svgWrapper}>
             <MenuSvg style={styles.svg} />
         </Pressable>}
-                { props.theme==='world' && <Pressable style={styles.svgWrapper}>
-                    <WorldSvg style={styles.svg} />
-                </Pressable>}
+        { props.theme==='world' && <Pressable style={styles.svgWrapper}>
+            <WorldSvg style={styles.svg} />
+        </Pressable>}
+        { props.theme==='exit' && <Pressable style={styles.svgWrapper}>
+            <Exit style={styles.svg} />
+        </Pressable>}
     </View>
   );
 };

@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#3A3A3A',
     },
     disabledText: {
-        color: '#666666'
+        color: '#666666',
+        width: '100%',
     },
     buttonText: {
         textAlign: 'center',

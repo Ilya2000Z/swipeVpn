@@ -5,25 +5,29 @@ import { useFonts } from "expo-font";
 import AnswerItem from './UI/AnswerItem.js'
 import WorldSvg from '../svg/world.js'
 import ContinueButton from './UI/ContinueButton'
-import { ProgressBar } from 'react-native-progress';
+import * as Progress from 'react-native-progress';
+import Play from '../assets/play.svg'
+import Social from '../assets/social.svg'
+import Video from '../assets/video.svg'
+import Rocket from '../assets/rocket.svg'
 
 const Quiz = () => {
   const [fontsLoaded] = useFonts({
     "Montserrat-700": require("../assets/fonts/Montserrat-Bold.ttf"),
   });
   	const items = [
-                    { image: <WorldSvg/>,
+                    { image: <Play/>,
                      name: 'Watching a video',
                      },
-                     { image: <WorldSvg/>,
+                     { image: <Social/>,
                        name: 'Social network',
                      },
-                     { image: <WorldSvg/>,
-                                          name: 'Watching a video',
-                                          },
-                                          { image: <WorldSvg color="red"/>,
-                                            name: 'Social network',
-                                          },
+                     { image: <Video/>,
+                        name: 'Watching a video',
+                     },
+                     { image: <Rocket color="red"/>,
+                        name: 'Social network',
+                     },
                     ];
                     const [progress, setProgress] = useState(0);
 
@@ -33,10 +37,10 @@ const Quiz = () => {
 	return(
 		<View style={styles.container}>
 			<View style={styles.wrapper}>
-<ProgressBar progress={progress} width={300} />
-    <Button title="Увеличить прогресс" onPress={increaseProgress}/>
+				<Progress.Bar style={styles.progress} progress={0.2} width={null} color={'#E7FE55'} borderWidth={0} borderRadius={2} unfilledColor={'#566379'}/>
 				<Text style={styles.title}>What will you use {"\n"} a VPN for?</Text>
 				            <FlatList
+				                style={styles.list}
                                 data={items}
                                 keyExtractor={(item, index) => index.toString()}
                                 renderItem={({ item }) => (
@@ -54,31 +58,37 @@ const Quiz = () => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      position: 'relative',
-      backgroundColor: '#000000',
+        flex: 1,
+        position: 'relative',
+        justifyContent: 'flex-end',
+        backgroundColor: '#000',
+        paddingTop: 32,
+        paddingBottom: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+    },
+    progress: {
+        marginTop: 16,
     },
     wrapper: {
-      paddingTop: 40,
-      marginLeft: 19,
-      marginRight: 19,
-      height: '100%',
-      paddingBottom: 100,
-      justifyContent: 'spaceBetween',
+			marginLeft: 16,
+            marginRight: 16,
     },
     item: {
         paddingBottom: 12,
         flex: 1,
     },
+
     title: {
-        width: '100%',
         textAlign: 'center',
         fontFamily: 'Montserrat-600',
         color: '#fff',
         fontSize: 34,
         fontWeight: 700,
         lineHeight: 41.45,
-        flex: 1
+        flex: 1,
+        paddingTop: 34,
     },
   })
 export default Quiz;

@@ -9,6 +9,8 @@ import Home from './components/Home';
 import Quiz from './components/Quiz';
 import StartScreen from './components/StartScreen';
 import ConnectionScreen from './components/ConnectionScreen'
+import Onboarding from './components/Onboarding'
+import Subscription from './components/Subscription'
 import { useFonts } from "expo-font";
 
 const App = () => {
@@ -60,7 +62,9 @@ const App = () => {
   };
 
   return (
-  <ConnectionScreen/>
+  <Subscription/>
+//  <Onboarding/>
+//  <ConnectionScreen/>
 //    <Quiz/>
 //	<StartScreen/>
 //	<Home/>
