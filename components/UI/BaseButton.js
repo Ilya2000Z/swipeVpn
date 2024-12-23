@@ -5,6 +5,7 @@ import { SvgUri } from "react-native-svg";
 import MenuSvg from "../../svg/menu.js"
 import WorldSvg from "../../svg/world.js"
 import Exit from "../../assets/exit.svg"
+import Search from "../../assets/search.svg"
 
 const BaseButton = (props) => {
 return (
@@ -17,6 +18,9 @@ return (
         </Pressable>}
         { props.theme==='exit' && <Pressable style={styles.svgWrapper}>
             <Exit style={styles.svg} />
+        </Pressable>}
+        { props.theme==='search' && <Pressable style={styles.svgWrapper}>
+            <Search style={styles.svg} />
         </Pressable>}
     </View>
   );

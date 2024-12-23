@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, ImageBackground, Dimensions } from 'react-native';
-import SubscriptionOption from './UI/SubscriptionOption';
+import SubscriptionOption from './UI/SubscriptionOption'
+import ContinueButton from './UI/ContinueButton'
 import { useFonts } from "expo-font";
 import BaseButton from './UI/BaseButton.js'
 import Check from '../assets/check.svg'
@@ -46,9 +47,13 @@ const { width, height } = Dimensions.get('window');
                         </View>
 		            </View>
                 </View>
-                <SubscriptionOption title='Trial period' subtitle='3 days'/>
-                 <SubscriptionOption title='1 month' subtitle='4$' duration='/month'/>
-                 <SubscriptionOption title='1 year' subtitle='48$' duration='/year' isActive={true}/>
+                <View style={styles.subscriptionItems}>
+                    <SubscriptionOption title='Trial period' subtitle='3 days'/>
+                    <SubscriptionOption title='1 month' subtitle='4$' duration='/month' isActive={true}/>
+                    <SubscriptionOption title='1 year' subtitle='48$' duration='/year' discount='-20%'/>
+                </View>
+                <ContinueButton isActive={true}/>
+                <Text style={styles.subscriptionTextBottom}>Auto-renewing subscriptions can be cancelled at any time in the Play Store or app settings</Text>
              </View>
 		</View>
 	)
@@ -59,14 +64,15 @@ const styles = StyleSheet.create({
         position: 'relative',
         backgroundColor: '#000',
         paddingTop: 32,
-        alignItems: 'center',
-        justifyContent: 'center',
+//        alignItems: 'center',
+//        justifyContent: 'center',
         flexDirection: 'column',
     },
     wrapper: {
         flex: 1,
         padding: 16,
         width: '100%',
+        justifyContent: 'space-between',
     },
     background: {
 	    position: 'absolute',
@@ -85,6 +91,7 @@ const styles = StyleSheet.create({
 		margin: 0,
 	},
 	block: {
+		marginTop: '7%',
 		paddingTop: 16,
 		paddingBottom: 16,
 		paddingRight: 20,
@@ -114,6 +121,11 @@ const styles = StyleSheet.create({
 	    justifyContent: 'center',
 	    alignItems: 'center',
     },
+    subscriptionItems: {
+        flex: 1,
+        rowGap: 8,
+        justifyContent: 'center',
+    },
     listItemWrapper: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -121,6 +133,7 @@ const styles = StyleSheet.create({
         marginTop: '7%',
     },
     listText: {
+        flex: 1,
         color: '#fff',
         fontFamily: 'Montserrat-500',
         fontSize: 14,
@@ -131,5 +144,10 @@ const styles = StyleSheet.create({
         textDecorationStyle: 'solid',
         textDecorationColor: 'transparent',
     },
+    subscriptionTextBottom: {
+        color: '#566379',
+        textAlign: 'center',
+        marginTop: '3%',
+    }
     })
 export default Subscription;

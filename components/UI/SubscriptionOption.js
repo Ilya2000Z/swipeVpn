@@ -11,6 +11,7 @@ const SubscriptionOption = (props) => {
     <View style={[styles.container, props.isActive && styles.active]}>
       <Text style={styles.title}>{props.title}</Text>
       {props.isActive && <View style={styles.labelWrapper}><Text style={styles.labelText}>Popular</Text></View>}
+      {props.discount && <View style={[styles.labelWrapper, styles.discount]}><Text style={[styles.labelText, styles.labelTextDiscount]}>{props.discount}</Text></View>}
       <View style={styles.wrapper}>
         <Text style={styles.value}>{props.subtitle}</Text>
         <Text style={styles.duration}>{props.duration}</Text>
@@ -78,12 +79,19 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingLeft: 16,
   },
+  discount: {
+    backgroundColor: 'transparent',
+
+  },
   labelText: {
     fontFamily: 'Montserrat-500',
     fontSize: 14,
     fontWeight: '500',
     lineHeight: 17.07,
     textAlign: 'center',
+  },
+  labelTextDiscount: {
+    color: '#B6FF63',
   }
 });
 

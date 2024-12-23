@@ -1,7 +1,8 @@
-import { View, Button, Text } from 'react-native';
+import { View, Button, Text, Image } from 'react-native';
 import { Platform, StyleSheet } from 'react-native';
 import { useFonts } from "expo-font";
 import LogoSvg from '../svg/logo.js'
+import LogoGif from '../assets/logo.gif'
 const StartScreen = () => {
   const [fontsLoaded] = useFonts({
     "Montserrat-600": require("../assets/fonts/Montserrat-SemiBold.ttf"),
@@ -10,7 +11,11 @@ const StartScreen = () => {
 	<View style={styles.container}>
 		<View style={styles.wrapper}>
 			<View style={styles.logo}>
-				<LogoSvg/>
+				      <Image
+                       source={require('../assets/logo.gif')}
+                        style={styles.gif}
+                        resizeMode="contain" // Режим изменения размера
+                      />
 			</View>
 			<View style={styles.text}>
 				<Text style={styles.title}>SwipeVPN</Text>
@@ -27,15 +32,17 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#000',
     },
-    wrapper: {
-
-    },
     logo: {
 		margin: 'auto',
 		marginTop: 130,
         maxHeight: 'auto',
     },
+    gif: {
+        height: 300,
+        width: 200,
+    },
     text: {
+        height: 113,
         marginTop:0,
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,9 +50,9 @@ const styles = StyleSheet.create({
     title: {
 		fontFamily: 'Montserrat-600',
 		color: '#fff',
-        fontSize: 20,
+        fontSize: 40,
         fontWeight: 600,
-        lineHeight: 48.76,
+        lineHeight: 50,
         letterSpacing: 0.15,
         textAlign: 'center',
     },

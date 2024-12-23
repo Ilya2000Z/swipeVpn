@@ -8,9 +8,10 @@ import Swipe from './components/UI/Swipe'
 import Home from './components/Home';
 import Quiz from './components/Quiz';
 import StartScreen from './components/StartScreen';
-import ConnectionScreen from './components/ConnectionScreen'
-import Onboarding from './components/Onboarding'
-import Subscription from './components/Subscription'
+import ConnectionScreen from './components/ConnectionScreen';
+import Onboarding from './components/Onboarding';
+import Subscription from './components/Subscription';
+import Regions from './components/Regions';
 import { useFonts } from "expo-font";
 
 const App = () => {
@@ -62,7 +63,8 @@ const App = () => {
   };
 
   return (
-  <Subscription/>
+  <Regions/>
+//  <Subscription/>
 //  <Onboarding/>
 //  <ConnectionScreen/>
 //    <Quiz/>

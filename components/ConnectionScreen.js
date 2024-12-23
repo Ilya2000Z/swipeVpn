@@ -1,13 +1,14 @@
-import { View, Button, Text, ImageBackground } from 'react-native';
+import { View, Button, Text, ImageBackground, Image } from 'react-native';
 import { Platform, StyleSheet } from 'react-native';
 import { useFonts } from "expo-font";
 import BaseButton from './UI/BaseButton.js'
 import Swipe from './UI/Swipe.js'
 import ArrowCircle from '../assets/arrowCircle.svg'
 import Flag from '../assets/flag.svg'
-import Logo from '../assets/logo.svg'
 import ChevronRight from '../assets/chevron-right.svg'
 import Map from '../assets/map.svg'
+
+import SpeedDownloadUpload from './UI/SpeedDownloadUpload.js'
 
 const ConnectionScreen = () => {
   const [fontsLoaded] = useFonts({
@@ -23,30 +24,17 @@ return (
            <Text style={styles.title}>SwipeVPN</Text>
         </View>
         <View>
-            <Logo style={styles.logo}/>
+            <Image
+               source={require('../assets/logo.gif')}
+                style={styles.gif}
+                resizeMode="contain" // Режим изменения размера
+              />
         </View>
         <View>
             <Text style={styles.connectingTitle}>Connecting Time</Text>
-            <Text style={styles.timer}>00:30:26</Text>
+            <Text style={styles.timer}>{'00:30:26'}</Text>
         </View>
-        <View style={styles.transfer}>
-            <View style={styles.transferItem}>
-                <ArrowCircle style={styles.arrow}/>
-		        <View style={styles.download}>
-					<Text style={styles.downloadText}>Download</Text>
-					<View style={styles.speedWrapper}><Text style={styles.speed}>{`${245}`}</Text> <Text style={styles.speedRate}>KB/s</Text></View>
-		        </View>
-            </View>
-            <View style={styles.line} />;
-            <View style={styles.transferItem}>
-                <ArrowCircle style={styles.arrow}/>
-                <View style={styles.download}>
-                    <Text style={styles.downloadText}>Download</Text>
-                    <View style={styles.speedWrapper}><Text style={styles.speed}>{`${245}`}</Text> <Text style={styles.speedRate}>KB/s</Text></View>
-                </View>
-            </View>
-
-        </View>
+        <SpeedDownloadUpload/>
         <View style={styles.countryWrapper}>
             <View style={styles.firstBlock}>
                 <Flag/>
@@ -114,6 +102,10 @@ const styles = StyleSheet.create({
             transform: [
                   { rotate: '90deg' },
                 ],
+          },
+          gif: {
+              height: 273,
+              width: 250,
           },
         connectingTitle: {
             color:'#E7FE55',
@@ -187,6 +179,7 @@ const styles = StyleSheet.create({
             height: 24,
         },
 		countryWrapper: {
+			height: 68,
 			width: '95%',
 			padding: 12,
 			backgroundColor: '#E7FE55',
@@ -195,6 +188,9 @@ const styles = StyleSheet.create({
 			alignItems: 'center',
 			justifyContent: 'space-between',
 			marginTop: '3%'
+		},
+		chevronRight: {
+			color: '#000'
 		},
 		locationWrapper: {
 			marginLeft: 12,
