@@ -5,7 +5,9 @@ import { useFonts } from "expo-font";
 import BaseButton from './UI/BaseButton.js'
 import Check from '../assets/check.svg'
 import SubscriptionBackground from '../assets/subscription-screen.png'
-const Subscription = () => {
+
+
+const SubscriptionPremiumActive = () => {
 const { width, height } = Dimensions.get('window');
   const [fontsLoaded] = useFonts({
     "Montserrat-700": require("../assets/fonts/Montserrat-Bold.ttf"),
@@ -19,40 +21,29 @@ const { width, height } = Dimensions.get('window');
 			<View style={styles.wrapper}>
                 <BaseButton style={styles.exit} theme='exit'/>
                 <View style={styles.block}>
-                    <Text style={styles.title}>Freedom is at your fingertips</Text>
+                    <Text style={styles.title}>Your Premium is</Text>
+                    <Text style={styles.title}>active</Text>
                     <View  style={styles.listWrapper}>
 	                    <View  style={styles.listItemWrapper}>
-		                    <View style={styles.icon}>
-			                    <Check style={styles.checkmark} />
-		                    </View>
-		                    <Text style={styles.listText}>No logging policy</Text>
+		                    <Text style={styles.icon}></Text>
+		                    <Text style={styles.listText}>Current plan: 1 month</Text>
 		                </View>
                         <View  style={styles.listItemWrapper}>
-                            <View style={styles.icon}>
-                                <Check style={styles.checkmark} />
-                            </View>
-                            <Text style={styles.listText}>Access to +100 regions</Text>
+                            <Text style={styles.icon}></Text>
+                            <Text style={styles.listText}>Next payment: Dec 5, 2024</Text>
                         </View>
                         <View  style={styles.listItemWrapper}>
-                            <View style={styles.icon}>
-                                <Check style={styles.checkmark} />
-                            </View>
-                            <Text style={styles.listText}>High speed</Text>
-                        </View>
-                        <View  style={styles.listItemWrapper}>
-                            <View style={styles.icon}>
-                                <Check style={styles.checkmark} />
-                            </View>
-                            <Text style={styles.listText}>No ads, no restrictions</Text>
+                            <Text style={styles.icon}></Text>
+                            <Text style={styles.listText}>3 weeks remaining</Text>
                         </View>
 		            </View>
                 </View>
                 <View style={styles.subscriptionItems}>
-                    <SubscriptionOption title='Trial period' subtitle='3 days'/>
-                    <SubscriptionOption title='1 month'sideText='Popular'  subtitle='4$' duration='/month' isActive={true}/>
-                    <SubscriptionOption title='1 year' subtitle='48$' duration='/year' discount='-20%'/>
+                    <SubscriptionOption isSubscriptionActive={true} title='1 month' subtitle='4$' duration='/month'/>
+
+                    <SubscriptionOption isActive={true} title='1 year' subtitle='48$' duration='/year' discount='-20%'/>
                 </View>
-                <ContinueButton text='Change plan' isActive={true}/>
+                <ContinueButton text='Change plan' isActive={false}/>
                 <Text style={styles.subscriptionTextBottom}>Auto-renewing subscriptions can be cancelled at any time in the Play Store or app settings</Text>
              </View>
 		</View>
@@ -150,4 +141,4 @@ const styles = StyleSheet.create({
         marginTop: '3%',
     }
     })
-export default Subscription;
+export default SubscriptionPremiumActive;

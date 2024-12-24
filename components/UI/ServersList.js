@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Text, FlatList, StyleSheet, ScrollView } from 'react-native';
 import { useFonts } from "expo-font";
 
-import More from '../../assets/more.svg'
-import MapPin from '../../assets/map-pin.svg'
+import Radio from '../../assets/radio.svg'
+import Arrow from '../../assets/arrow-left.svg'
 
-const CitiesList = (props) => {
+const ServersList = (props) => {
 
 const [fontsLoaded] = useFonts({
 "Montserrat-700": require("../../assets/fonts/Montserrat-Bold.ttf"),
@@ -15,9 +15,8 @@ const [fontsLoaded] = useFonts({
 
   const renderItem = ({ item }) => (
     <View style={styles.cityWrapper}>
-      <MapPin/>
       <Text style={[styles.cityName, props.isSubscriptionActive && styles.opacity]}>{item}</Text>
-      <More  style={styles.more}/>
+      <Radio/>
     </View>
   );
 
@@ -26,13 +25,20 @@ return (
         <View style={styles.wrapper}>
 			<Text style={styles.grabber}></Text>
 			<View style={styles.countryWrapper}>
+				<Arrow/>
 				<props.flag width={46} height={46}/>
-				<Text style={styles.countryName}>Brazil</Text>
+				<View style={styles.cityTitleWrapper}>
+					<Text style={styles.countryName}>{props.countryName}</Text>
+					<Text style={styles.cityTitleName}>{props.cityName}</Text>
+				</View>
 			</View>
-			<Text style={styles.citiesCount}>2 cities</Text>
+			<View style={styles.serversCountWrapper}>
+				<Text style={styles.serversCount}>4 servers</Text>
+				<Text style={[styles.serversCount,styles.serversPing]}>Ping</Text>
+			</View>
 		     <FlatList
 		        style={styles.list}
-                data={props.cities}
+                data={props.servers}
                 renderItem={renderItem}
               />
         </View>
@@ -87,12 +93,10 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     color: '#fff'
   },
-  citiesCount: {
-    width: '100%',
+  serversCount: {
     color: '#566379',
     fontFamily: 'Montserrat-400',
     fontSize: 16,
-    fontWeight: 400,
   },
   list: {
     width: '100%',
@@ -105,13 +109,27 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
   },
   cityName: {
-    marginLeft: 12,
 	flex: 1,
 	color: '#fff',
     fontFamily: 'Montserrat-400',
     fontSize: 16,
     fontWeight: 400,
   },
+  cityTitleWrapper: {
+    flexDirection: 'column',
+  },
+  cityTitleName: {
+  	color: '#566379',
+      fontFamily: 'Montserrat-400',
+      fontSize: 16,
+      fontWeight: 400,
+  },
+  serversCountWrapper: {
+      width: '100%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+  },
 })
 
-export default CitiesList;
+export default ServersList;

@@ -3161,6 +3161,11 @@ expo-asset@~11.0.1:
     invariant "^2.2.4"
     md5-file "^3.2.3"
 
+expo-blur@~14.0.1:
+  version "14.0.1"
+  resolved "http://npm.prakticum-team.ru/expo-blur/-/expo-blur-14.0.1.tgz"
+  integrity sha512-3Q6jFBLbY8n2vwk28ycUC+eIlVhnlqwkXUKk/Lfaj+SGV3AZMQyrixe7OYwJdUfwqETBrnYYMB6uNrJzOSbG+g==
+
 expo-constants@~17.0.0, expo-constants@~17.0.3:
   version "17.0.3"
   resolved "http://npm.prakticum-team.ru/expo-constants/-/expo-constants-17.0.3.tgz"

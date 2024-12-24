@@ -50,7 +50,7 @@ const Quiz = () => {
 								</View>
                                   )}
                             />
-				<ContinueButton isActive={false}/>
+				<ContinueButton text='Continue' isActive={false}/>
 			</View>
 		</View>
 	)

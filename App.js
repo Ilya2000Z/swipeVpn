@@ -10,8 +10,11 @@ import Quiz from './components/Quiz';
 import StartScreen from './components/StartScreen';
 import ConnectionScreen from './components/ConnectionScreen';
 import Onboarding from './components/Onboarding';
+import SubscriptionPremiumActive from './components/SubscriptionPremiumActive';
 import Subscription from './components/Subscription';
 import Regions from './components/Regions';
+import Settings from './components/Settings'
+import Search from './components/Search'
 import { useFonts } from "expo-font";
 
 const App = () => {
@@ -63,14 +66,16 @@ const App = () => {
   };
 
   return (
-  <Regions/>
+//  <Regions/>
 //  <Subscription/>
 //  <Onboarding/>
+//<SubscriptionPremiumActive/>
 //  <ConnectionScreen/>
 //    <Quiz/>
 //	<StartScreen/>
 //	<Home/>
-
+//<Settings/>
+<Search/>
   );
 };
 

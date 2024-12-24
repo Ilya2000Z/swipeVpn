@@ -21,11 +21,9 @@ const MapDot = () => {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
       position: 'relative',
       justifyContent: 'flex-end',
-      backgroundColor: '#000',
-      paddingBottom: 30,
+      backgroundColor: 'transparent',
     },
     wrapper: {
       justifyContent: 'center',

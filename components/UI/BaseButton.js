@@ -6,6 +6,7 @@ import MenuSvg from "../../svg/menu.js"
 import WorldSvg from "../../svg/world.js"
 import Exit from "../../assets/exit.svg"
 import Search from "../../assets/search.svg"
+import Chevron from "../../assets/chevron-right.svg"
 
 const BaseButton = (props) => {
 return (
@@ -22,6 +23,9 @@ return (
         { props.theme==='search' && <Pressable style={styles.svgWrapper}>
             <Search style={styles.svg} />
         </Pressable>}
+        { props.theme==='back' && <Pressable style={styles.svgWrapper}>
+            <Chevron style={[styles.svg, styles.chevron]} />
+        </Pressable>}
     </View>
   );
 };
@@ -29,6 +33,10 @@ return (
     svg: {
       width: 24,
       height: 24,
+      color: '#000',
+    },
+    chevron: {
+        transform: [{ rotate: '-180deg' }],
     },
     svgWrapper: {
         backgroundColor: '#E7FE55',

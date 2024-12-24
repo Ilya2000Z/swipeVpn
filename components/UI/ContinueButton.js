@@ -6,7 +6,7 @@ const ContinueButton = (props) => {
   });
 	return(
         <TouchableOpacity style={[styles.button, !props.isActive ? styles.disabled : '']}>
-              <Text style={[styles.buttonText, !props.isActive ? styles.disabledText : '']}>Continue</Text>
+              <Text style={[styles.buttonText, !props.isActive ? styles.disabledText : '']}>{props.text ? props.text : Continue}</Text>
             </TouchableOpacity>
 	)
 }

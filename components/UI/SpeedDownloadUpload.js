@@ -23,7 +23,7 @@ return (
 			<View style={styles.speedWrapper}><Text style={styles.speed}>245</Text> <Text style={styles.speedRate}>KB/s</Text></View>
         </View>
     </View>
-    <View style={styles.line} />;
+    <View style={styles.line} />
     <View style={styles.transferItem}>
         <ArrowCircle style={[styles.arrow, styles.arrowUpload]}/>
         <View style={styles.download}>

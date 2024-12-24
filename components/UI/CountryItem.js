@@ -4,6 +4,7 @@ import { useFonts } from "expo-font";
 
 import ChevronRight from '../../assets/chevron-right.svg'
 import More from '../../assets/more.svg'
+import Radio from '../../assets/radio.svg'
 
 const CountryItem = (props) => {
 
@@ -15,14 +16,15 @@ const [fontsLoaded] = useFonts({
 
 return (
     <View style={styles.container}>
-        <View style={[styles.wrapper, props.isFree==false && styles.disable]}>
-            <props.flag width={44} height={44}/>
-            <View style={styles.textWrapper}>
-                <Text style={styles.textCountry}>{props.countryName}</Text>
-                <Text style={styles.textCity}>{props.cityName}</Text>
+        <View style={styles.wrapper}>
+            <props.flag style={[styles.flag, !props.isFree && styles.disable, props.noFlag && styles.noFlag]}/>
+            <View style={[styles.textWrapper, props.isFree==false && styles.disable]}>
+                {props.countryName && <Text style={styles.textCountry}>{props.countryName}</Text>}
+                {props.cityName && <Text style={styles.textCity}>{props.cityName}</Text>}
             </View>
-            {props.isFree==true && <ChevronRight style={styles.chevronRight}/>}
-            {props.isFree==false && <More/>}
+            {props.isFree==true && !props.dot && !props.server && <ChevronRight style={styles.chevronRight}/>}
+            {(props.isFree==false || props.dot) && <More/>}
+            {props.server && <Radio/>}
         </View>
     </View>
 )
@@ -30,7 +32,6 @@ return (
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     backgroundColor: 'transparent',
   },
@@ -60,16 +61,26 @@ textCity: {
   fontFamily: 'Montserrat-400',
   fontSize: 16,
   fontWeight: 400,
-  lineHeight: 19.5,
   color: '#566379',
 },
 chevronRight: {
 	color: '#fff',
 	width: 24,
 	height: 24,
+	top: '1%',
 },
 disable: {
 	opacity: 0.6,
+},
+noFlag: {
+	width: 24,
+	height: 24,
+	top: '1%',
+},
+flag: {
+	width: 44,
+	height: 44,
+	maxWidth: 44,
 }
 })
 

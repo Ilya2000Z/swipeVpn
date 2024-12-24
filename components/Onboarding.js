@@ -16,7 +16,7 @@ const Onboarding = () => {
 			<Progress.Bar style={styles.progress} progress={0.8} width={null} color={'#E7FE55'} borderWidth={0} borderRadius={2} unfilledColor={'#566379'}/>
 			<Honeycomb style={styles.honeycomb}/>
 			<Text style={styles.text}>Configuring the configuration for your purposes</Text>
-			<ContinueButton isActive={true}/>
+			<ContinueButton text='Continue' isActive={true}/>
             <Text style={styles.terms}>
                 By continuing, you accept the{"\n"}{' '}
                 <TouchableOpacity>

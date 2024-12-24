@@ -28,10 +28,10 @@ const SwipeButton = (props) => {
                 <Pressable style={[styles.thumb, props.isDisabled==='true' ? styles.disabled : styles.active]}>
                     <DotsSvg/>
                 </Pressable>
-                {props.isConnected==='false' && <Text style={[styles.text, props.isDisabled ? styles.disabledText : styles.activeText]}>Connect</Text>}
-                {props.isConnected==='true' && <Text style={styles.disconnectText}>Disconnect</Text>}
-                { props.isDisabled==='false' && <ChevronsActive style={props.isConnected ? styles.chevronsConnected : ''}/> }
-                { props.isDisabled==='true' && <ChevronsDisabled/> }
+                {!props.isConnected && <Text style={[styles.text, props.isDisabled ? styles.disabledText : styles.activeText]}>Connect</Text>}
+                {props.isConnected && <Text style={styles.disconnectText}>Disconnect</Text>}
+                { !props.isDisabled && <ChevronsActive style={props.isConnected ? styles.chevronsConnected : ''}/> }
+                { props.isDisabled && <ChevronsDisabled/> }
             </View>
         </View>
       );
@@ -52,6 +52,7 @@ const SwipeButton = (props) => {
         borderRadius: 190,
     },
     trackConnected: {
+        flex: 1,
         flexDirection: 'row-reverse',
         height: 74,
         backdropFilter: 'blur(4.800000190734863px)',
@@ -86,7 +87,7 @@ const SwipeButton = (props) => {
         lineHeight: 19.5,
     },
     disabledText: {
-        color: '#566379'
+        color: '#566379',
     },
     activeText: {
         color: '#fff',

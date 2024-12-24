@@ -6,6 +6,9 @@ import Place from './UI/Place.js'
 import Swipe from './UI/Swipe.js'
 import Map from '../assets/map.svg'
 import MapDot from './UI/MapDot.js'
+
+
+import SideMenu from './SideMenu.js'
 const Home = () => {
 
   const [fontsLoaded] = useFonts({
@@ -13,6 +16,8 @@ const Home = () => {
   });
 
   return (
+  <>
+    {/*SideMenu/*/}
     <View style={styles.container}>
     <Map style={styles.background} width="700%" height="200%"/>
 	<MapDot/>
@@ -30,6 +35,7 @@ const Home = () => {
             </View>
             </View>
     </View>
+    </>
   );
 }
 
@@ -49,29 +55,30 @@ const Home = () => {
 	    top: '50%', //убрать когда будет приближение
     },
     buttonMenuWrapper: {
-      width: '100%',
-      marginTop:'5%',
-      paddingLeft: '4%',
-      paddingTop: '3%',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      position: 'relative',
+        flex: 1,
+		position: 'absolute',
+		top: '5%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        paddingLeft: '4%',
     },
     title: {
-    	        position: 'absolute',
-    	        left: 0,
-    	        right:0,
-    	        margin:0,
-    	        paddingTop: '3%',
-    	        width: '100%',
-                textAlign: 'center',
-                fontFamily: 'Montserrat-600',
-                color: '#fff',
-                fontSize: 20,
-                fontWeight: 600,
-                lineHeight: 24.38,
-                letterSpacing: 0.15000000596046448,
+        paddingTop: '3%',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: '100%',
+        width: '100%',
+        textAlign: 'center',
+		position: 'absolute',
+        fontFamily: 'Montserrat-600',
+        color: '#fff',
+        fontSize: 20,
+        fontWeight: 600,
+        lineHeight: 24.38,
+        letterSpacing: 0.15000000596046448,
+
             },
     bottomWrapper: {
               display: 'flex',

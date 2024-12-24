@@ -7,10 +7,12 @@ import CountryItem from './UI/CountryItem.js'
 import SpeedDownloadUpload from './UI/SpeedDownloadUpload.js'
 import CurrentLocationTimer from './UI/CurrentLocationTimer.js'
 import CitiesList from './UI/CitiesList.js'
+import ServersList from './UI/ServersList.js'
 
 import PL from '../assets/flags/PL.svg'
 import US from '../assets/flags/US.svg'
 import NL from '../assets/flags/NL.svg'
+import BR from '../assets/flags/BR.svg'
 
 const Regions = () => {
 	  const [fontsLoaded] = useFonts({
@@ -47,7 +49,9 @@ const Regions = () => {
 			</View>
 		</View>
     </View>
-    <CitiesList style={styles.absolute} countryName='Poland' cities={['Sao Paulo',' Rio de Janeiro']}/>
+    {/* <CitiesList style={styles.absolute} isSubscriptionActive={true} countryName='Poland'  flag={BR} cities={['Sao Paulo',' Rio de Janeiro','Sao Paulo',' Rio de Janeiro']}/> */}
+
+    {/* <ServersList  style={styles.absolute} isSubscriptionActive={true} countryName='Brazil' cityName='Sao Paulo'  flag={BR} servers={['BR #1','BR #2','BR #3','BR #4']}/> */}
     </>
   );
 };
@@ -88,6 +92,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     flex: 1,
+    width: '100%',
   },
   blockTitle: {
         fontFamily: 'Montserrat-700',
