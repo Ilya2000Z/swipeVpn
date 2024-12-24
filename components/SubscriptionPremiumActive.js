@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ImageBackground, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, Dimensions, ScrollView } from 'react-native';
 import SubscriptionOption from './UI/SubscriptionOption'
 import ContinueButton from './UI/ContinueButton'
 import { useFonts } from "expo-font";
@@ -18,7 +18,7 @@ const { width, height } = Dimensions.get('window');
 		<View style={styles.container}>
 			<ImageBackground style={[styles.background, { width, height }]}
              resizeMode="cover" source={SubscriptionBackground}/>
-			<View style={styles.wrapper}>
+			<ScrollView style={styles.wrapper}>
                 <BaseButton style={styles.exit} theme='exit'/>
                 <View style={styles.block}>
                     <Text style={styles.title}>Your Premium is</Text>
@@ -45,7 +45,7 @@ const { width, height } = Dimensions.get('window');
                 </View>
                 <ContinueButton text='Change plan' isActive={false}/>
                 <Text style={styles.subscriptionTextBottom}>Auto-renewing subscriptions can be cancelled at any time in the Play Store or app settings</Text>
-             </View>
+             </ScrollView>
 		</View>
 	)
 };
@@ -54,16 +54,13 @@ const styles = StyleSheet.create({
         flex: 1,
         position: 'relative',
         backgroundColor: '#000',
-        paddingTop: 32,
-//        alignItems: 'center',
-//        justifyContent: 'center',
+        marginTop: 24,
+        padding: 16,
         flexDirection: 'column',
     },
     wrapper: {
         flex: 1,
-        padding: 16,
         width: '100%',
-        justifyContent: 'space-between',
     },
     background: {
 	    position: 'absolute',
@@ -92,6 +89,7 @@ const styles = StyleSheet.create({
         backdropFilter: 'blur(10.199999809265137px)',
         borderWidth: 1,
         borderColor: '#FFFFFF17',
+        marginBottom: '8%',
 	},
 	title: {
 		color: '#fff',
@@ -116,6 +114,7 @@ const styles = StyleSheet.create({
         flex: 1,
         rowGap: 8,
         justifyContent: 'center',
+        marginBottom: '8%',
     },
     listItemWrapper: {
         flexDirection: 'row',

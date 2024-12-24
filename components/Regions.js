@@ -59,6 +59,7 @@ const Regions = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 24,
     padding: 16,
     backgroundColor: '#000',
     justifyContent: 'center',
@@ -69,7 +70,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    padding: 16,
     width: '100%',
     justifyContent: 'space-between',
     alignItems: 'center',

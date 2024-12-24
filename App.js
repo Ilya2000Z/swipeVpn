@@ -74,8 +74,8 @@ const App = () => {
 //    <Quiz/>
 //	<StartScreen/>
 //	<Home/>
-//<Settings/>
-<Search/>
+<Settings/>
+//<Search/>
   );
 };
 

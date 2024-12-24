@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         backgroundColor: '#000',
         paddingTop: 32,
-        paddingBottom: 100,
+        paddingBottom: '8%',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
@@ -72,12 +72,13 @@ const styles = StyleSheet.create({
         marginTop: 16,
     },
     wrapper: {
-			marginLeft: 16,
-            marginRight: 16,
+	    flex: 1,
+	    height: '100%',
+		marginLeft: 16,
+        marginRight: 16,
     },
     item: {
         paddingBottom: 12,
-        flex: 1,
     },
 
     title: {
@@ -87,8 +88,8 @@ const styles = StyleSheet.create({
         fontSize: 34,
         fontWeight: 700,
         lineHeight: 41.45,
-        flex: 1,
         paddingTop: 34,
+        marginBottom: '8%',
     },
   })
 export default Quiz;
